@@ -1,7 +1,7 @@
 
 ## GiantVM
 
-![https://github.com/GiantVM/homepage/blob/master/arch.png](https://github.com/GiantVM/homepage/blob/master/arch.png)
+![https://github.com/GiantVM/homepage/blob/master/images/arch.png](https://github.com/GiantVM/homepage/blob/master/images/arch.png)
 
 GiantVM is a distributed hypervisor that aggregates resources from multiple physical machines, providing the guest OS with a uniform hardware abstraction. A QEMU-KVM instance runs on each node of a cluster.
 

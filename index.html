@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Aria is a business focused HTML landing page template built with Bootstrap to help you create lead generation websites for companies and their services.">
+    <meta name="author" content="Inovatik">
+
+    <!-- OG Meta Tags to improve the way the post looks when you share the page on LinkedIn, Facebook, Google+ -->
+	<meta property="og:site_name" content="" /> <!-- website name -->
+	<meta property="og:site" content="" /> <!-- website link -->
+	<meta property="og:title" content=""/> <!-- title shown in the actual shared post -->
+	<meta property="og:description" content="" /> <!-- description shown in the actual shared post -->
+	<meta property="og:image" content="" /> <!-- image link, make sure it's jpg -->
+	<meta property="og:url" content="" /> <!-- where do you want your post to link to -->
+	<meta property="og:type" content="article" />
+
+    <!-- Website Title -->
+    <title>GiantVM</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600&display=swap&subset=latin-ext" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fontawesome-all.css" rel="stylesheet">
+    <link href="css/swiper.css" rel="stylesheet">
+	<link href="css/magnific-popup.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="images/favicon.png">
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+    
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
+        <!-- Text Logo - Use this if you don't have a graphic logo -->
+        <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Aria</a> -->
+
+        <!-- Image Logo -->
+        <!-- <a class="navbar-brand logo-image" href="index.html"><img src="" alt="alternative"></a> -->
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-awesome fas fa-bars"></span>
+            <span class="navbar-toggler-awesome fas fa-times"></span>
+        </button>
+        <!-- end of mobile menu toggle button -->
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#header">HOME <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#intro">INTRO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#code">CODE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#commandLine">COMMANDLINE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#publication">PUBLICATION</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#demo">DEMO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#slides">SLIDES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#aboutus">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="#contact">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </nav> <!-- end of navbar -->
+    <!-- end of navbar -->
+
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="header-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-container">
+                            <h1>GIANT VM</h1>
+                            <p class="p-heading p-large">GiantVM is a distributed hypervisor that aggregates resources from multiple physical machines, 
+                                providing the guest OS with a uniform hardware abstraction.</p>
+                            <a class="btn-solid-lg page-scroll" href="#intro">DISCOVER</a>
+                        </div>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of header-content -->
+    </header> <!-- end of header -->
+    <!-- end of header -->
+
+
+    <!-- Intro -->
+    <div id="intro" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="text-container">
+                        <h1>INTRO</h1>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-8">
+                    <div class="text-container">
+                        <h2>What's GiantVM</h2>
+                        <p>GiantVM is a distributed hypervisor that aggregates resources from multiple physical machines, providing the guest OS with a uniform hardware abstraction.
+                             A QEMU-KVM instance runs on each node of a cluster.</p>
+                        <p>This work is supported by the National Key Research & Development Program of China 2016YFB1000502.</p>
+                        <h3>About distributed QEMU</h3>
+                        <p>In QEMU-KVM virtualization, QEMU simluates guest or device I/O requests and interrupts by interception. 
+                            GiantVM is equipped IPI forwarding, interrupt forwarding and I/O forwarding techniques,
+                             which overcome the difficulties of sharing CPU and I/O devices across machines.</p> 
+                        <h3>About distributed KVM</h3>
+                            
+                        <p>KVM manages memory virtualization. At the heart of GiantVM is a distributed shared memory (DSM) based on Ivy, which enables the sharing of memory across multiple machines. GiantVM implements various techniques to overcome the challenges of integrating the DSM into virtualization environments</p>
+                        <p class="testimonial-text"></p>
+                        <div class="testimonial-author"></div>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of intro -->
+
+    <!-- Code -->
+    <div id="code" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="text-container">
+                        <h1>CODE</h1>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                
+                <div class="col-lg-8">
+                    <div class="cards-1">
+                        <div class="container">
+                            <!-- <div class="row"> -->
+                                <!-- Card -->
+                                <div class="card">
+                                    <span class="fa-stack">
+                                        <span class="hexagon"></span>
+                                        <i class="fas fa-binoculars fa-stack-1x"></i>
+                                    </span>
+                                    <div class="card-body">
+                                        <h4 class="card-title">1. QEMU</h4>
+                                        <p>BASE QEMU branch stable-2.8<br>
+                                            <a href="https://github.com/GiantVM/QEMU.git">https://github.com/GiantVM/QEMU.git</a></p>
+                                    </div>
+                                </div>
+                                <!-- end of card -->
+
+                                <!-- Card -->
+                                <div class="card">
+                                    <span class="fa-stack">
+                                        <span class="hexagon"></span>
+                                        <i class="fas fa-list-alt fa-stack-1x"></i>
+                                    </span>
+                                    <div class="card-body">
+                                        <h4 class="card-title">2. KVM</h4>
+                                        BASE Linux Kernel branch 4.8.10<br>
+                                        <a href = "https://github.com/GiantVM/Linux-DSM.git"> https://github.com/GiantVM/Linux-DSM.git</a>
+                                    </div>
+                                </div>
+                                <!-- end of card -->
+
+                                <!-- Card -->
+                                <div class="card">
+                                    <span class="fa-stack">
+                                        <span class="hexagon"></span>
+                                        <i class="fas fa-chart-pie fa-stack-1x"></i>
+                                    </span>
+                                    <div class="card-body">
+                                        <h4 class="card-title">3. sv6</h4>
+                                        BASE <a href="https://github.com/aclements/sv6">https://github.com/aclements/sv6</a> 
+                                    </div>
+                                </div>
+                            <!-- </div>  -->
+                        </div> <!--end of container-->
+                    </div> <!-- end of card -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of Code -->
+
+    <!-- command line -->
+    <div id="commandLine" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="text-container">
+                        <h1>COMMAND LINE</h1>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-8">
+                    <div id="commandLine" class="accordion">
+                        <div class="accordion-container" id="accordionTwo">
+                            <p>For example, run sv6 OS in GiantVM on two machines</p>
+                            <div class="item">
+                                <div id="headingOne">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
+                                        <span class="circle-numbering">1</span>
+                                        <span class="accordion-title">On machine 1 (ip 10.0.0.2), run: <br>
+                                            
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>sudo qemu-system-x86_64 -smp 2 -m 20480 -machine q35,kernel-irqchip=off -serial mon:stdio -nographic -net user -net nic,model=e1000 -device ahci,id=ahci0 -drive if=none,file=o.qemu/fs.img,format=raw,id=drive-sata0-0-0 -device ide-drive,bus=ahci0.0,drive=drive-sata0-0-0,id=sata0-0-0 -kernel o.qemu/kernel.elf --enable-kvm -local-cpu 16,start=0,iplist="10.0.0.1 10.0.0.2"
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div> <!-- end of item -->
+                        
+                            <div class="item">
+                                <div id="headingTwo">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
+                                        <span class="circle-numbering">2</span>
+                                        <span class="accordion-title">On machine 0 (ip 10.0.0.1), run: <br>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>sudo qemu-system-x86_64 -smp 2 -m 20480 -machine q35,kernel-irqchip=off -serial mon:stdio -nographic -net user -net nic,model=e1000 -device ahci,id=ahci0 -drive if=none,file=o.qemu/fs.img,format=raw,id=drive-sata0-0-0 -device ide-drive,bus=ahci0.0,drive=drive-sata0-0-0,id=sata0-0-0 -kernel o.qemu/kernel.elf --enable-kvm -local-cpu 16,start=16,iplist="10.0.0.1 10.0.0.2"
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div> <!-- end of item -->
+                        
+                            <div class="item">
+                                <div id="headingThree">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" role="button">
+                                        <span class="circle-numbering">3</span>
+                                        <span class="accordion-title">Wait for guest OS booting<br>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div> <!-- end of item -->
+            
+                        </div> <!-- end of tabs-container -->
+                    </div> <!-- end of tabs -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of commandline -->
+
+    <!-- publication -->
+    <div id="publication" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="text-container">
+                        <h1>PUBLICATION</h1>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-8">
+                    <div class="text-container">
+                        <h2>TBA</h2>
+                        
+                        <p class="testimonial-text"></p>
+                        <div class="testimonial-author"></div>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of publication -->
+
+    <!-- demo -->
+    <div id="demo" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="text-container">
+                        <h1>DEMO</h1>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-8">
+                        <video width="800" height="600" controls="controls">
+                            <source src="video/kvm_forum_v4.mp4" type="video/mp4" />
+                            <object data="kvm_forum_v4.mp4" width="800" height="600">
+                              <embed src="video/kvm_forum_v4.mp4" width="800" height="600" />
+                            </object>
+                          </video>
+                        <p class="testimonial-text"></p>
+                        <div class="testimonial-author"></div>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of demo -->
+
+    <!-- slides -->
+    <div id="slides" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="text-container">
+                        <h1>SLIDES</h1>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-8">
+                    <div class="text-container">
+                        <h2>TBA</h2>
+                        
+                        <p class="testimonial-text"></p>
+                        <div class="testimonial-author"></div>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of publication --> 
+
+
+
+    <!-- Team -->
+    <div id="aboutus" class="basic-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>ABOUT US</h1>
+                    <p class="p-heading"><a href="https://tcloud.sjtu.edu.cn">Trusted Cloud Group</a>, Shanghai Jiaotong University</p>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="images/team-1.png" alt="alternative">
+                        </div> <!-- end of image-wrapper -->
+                        <p class="p-large">Zhengwei Qi</p>
+                        <p class="job-title">qizhwei@sjtu.edu.cn</p>
+                    </div> <!-- end of team-member -->
+                    <!-- end of team member -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="images/team-3.png" alt="alternative">
+                        </div> <!-- end of image wrapper -->
+                        <p class="p-large">Zhuocheng Ding</p>
+                        <p class="job-title">tcbbd@sjtu.edu.cn</p>
+                    </div> <!-- end of team-member -->
+                    <!-- end of team member -->
+
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="images/team-4.png" alt="alternative">
+                        </div> <!-- end of image wrapper -->
+                        <p class="p-large">Yubin Chen</p>
+                        <p class="job-title">binsschen@sjtu.edu.cn</p>
+                    </div> <!-- end of team-member -->
+                    <!-- end of team member -->
+                    
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="images/team-4.png" alt="alternative">
+                        </div> <!-- end of image wrapper -->
+                        <p class="p-large">Jin Zhang</p>
+                        <p class="job-title">jzhang3002@sjtu.edu.cn</p>
+                    </div> 
+                    <!-- end of team member -->
+
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="images/team-4.png" alt="alternative">
+                        </div> <!-- end of image wrapper -->
+                        <p class="p-large">Yun Wang</p>
+                        <p class="job-title">yunwang94@sjtu.edu.cn</p>
+                    </div> 
+                    <!-- end of team member -->
+
+                    <!-- Team Member -->
+                    <div class="team-member">
+                        <div class="image-wrapper">
+                            <img class="img-fluid" src="images/team-4.png" alt="alternative">
+                        </div> <!-- end of image wrapper -->
+                        <p class="p-large">Jiacheng Ma</p>
+                        <p class="job-title">jcma@umich.edu</p>
+                    </div> 
+                    <!-- end of team member -->
+                    
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-2 -->
+    <!-- end of team -->
+
+
+    <!-- Contact -->
+    <div id="contact" class="basic-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="text-container">
+                        <h1>CONTACT</h1>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+                <div class="col-lg-8">
+                    <div class="text-container">
+                        <h2>Room 5406, School of Software, </h2>
+                        <h2>Shanghai Jiao Tong University, Shanghai, 200240</h2>
+                        <p class="testimonial-text"></p>
+                        <div class="testimonial-author"></div>
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of basic-1 -->
+    <!-- end of contact -->
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="p-small">Copyright © 2020 <a href="tcloud.sjtu.edu.cn">Trusted Cloud Group · Shanghai Jiao Tong University</a></p>
+                </div> <!-- end of col -->
+            </div> <!-- enf of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of copyright --> 
+    <!-- end of copyright -->
+    
+    	
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="js/morphext.min.js"></script> <!-- Morphtext rotating text in the header -->
+    <script src="js/isotope.pkgd.min.js"></script> <!-- Isotope for filter -->
+    <script src="js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="js/scripts.js"></script> <!-- Custom scripts -->
+</body>
+</html>
