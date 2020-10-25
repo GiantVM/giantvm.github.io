@@ -52,7 +52,14 @@ For example, run sv6 OS in GiantVM on two machines:
 
 ### Publication
 
-TBA (To be accepted)
+<a href ="https://doi.org/10.1145/3381052.3381324">GiantVM: A Type-II Hypervisor Implementing Many-to-one Virtualization</a>
+
+
+Jin Zhang, Zhuocheng Ding, Yubin Chen, Xingguo Jia, Boshi Yu, Zhengwei Qi, Haibing Guan
+
+VEE '20: Proceedings of the 16th ACM SIGPLAN/SIGOPS International Conference on Virtual Execution Environments
+· March 2020 · Pages 30–44
+                        
 
 ### Demo
 
@@ -75,3 +82,12 @@ Yun Wang \<[yunwang94@sjtu.edu.cn](mailto:yunwang94@sjtu.edu.cn)\>
 
 Jiacheng Ma \<[jcma@umich.edu](mailto:jcma@umich.edu)\>
 
+Boshi Yu \<[201608ybs@sjtu.edu.cn](mailto:201608ybs@sjtu.edu.cn)>
+
+Xingguo Jia \<[jiaxg1998@sjtu.edu.cn](mailto:jiaxg1998@sjtu.edu.cn)>
+
+Weiye Chen \<[](mailto:)>
+
+Chenggang Wu \<[](mailto:)>
+
+Yuxin Xiang \<[xiangyuxin@sjtu.edu.cn](mailto:xiangyuxin@sjtu.edu.cn)\>
