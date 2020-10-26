@@ -69,7 +69,7 @@ VEE '20: Proceedings of the 16th ACM SIGPLAN/SIGOPS International Conference on 
 [Distributed QEMU](slides/giantvm-turing.pdf) - KVM forum 2018
 
 ### About Us
-#### [Trusted Cloud Group](http://tcloud.sjtu.edu.cn/), Shanghai Jiaotong University
+#### [Trusted Cloud Group](http://tcloud.sjtu.edu.cn/), Shanghai Jiao Tong University
 Zhengwei Qi \<[qizhwei@sjtu.edu.cn](mailto:qizhwei@sjtu.edu.cn)\>
 
 Zhuocheng Ding \<[tcbbd@sjtu.edu.cn](mailto:tcbbd@sjtu.edu.cn)\>
