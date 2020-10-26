@@ -88,6 +88,4 @@ Xingguo Jia \<[jiaxg1998@sjtu.edu.cn](mailto:jiaxg1998@sjtu.edu.cn)>
 
 Weiye Chen \<[](mailto:)>
 
-Chenggang Wu \<[](mailto:)>
-
 Yuxin Xiang \<[xiangyuxin@sjtu.edu.cn](mailto:xiangyuxin@sjtu.edu.cn)\>
