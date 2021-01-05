@@ -127,12 +127,12 @@
     <div id="intro" class="basic-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="text-container">
                         <h1>INTRO</h1>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="text-container">
                         <h2>What's GiantVM</h2>
                         <p>GiantVM is a distributed hypervisor that aggregates resources from multiple physical machines, providing the guest OS with a uniform hardware abstraction.
@@ -158,12 +158,12 @@
     <div id="patent" class="basic-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="text-container">
                         <h1>PATENT</h1>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="text-container">
                         <h2>GIANTVM FOR RESOURCE AGGREGATION</h2>
                         <h2>US Patent 10853119</h2>
@@ -180,13 +180,13 @@
     <div id="code" class="basic-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="text-container">
                         <h1>CODE</h1>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="cards-1">
                         <div class="container">
                             <!-- <div class="row"> -->
@@ -242,18 +242,18 @@
     <div id="commandLine" class="basic-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="text-container">
                         <h1>COMMAND LINE</h1>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div id="commandLine" class="accordion">
                         <div class="accordion-container" id="accordionTwo">
-                            <p>For example, run sv6 OS in GiantVM on two machines</p>
-                            <div class="item">
+                            <!--p>For example, run sv6 OS in GiantVM on two machines</p -->
+                            <!-- div class="item">
                                 <div id="headingOne">
-                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" role="button">
                                         <span class="circle-numbering">1</span>
                                         <span class="accordion-title">On machine 1 (ip 10.0.0.2), run: <br>
                                             
@@ -266,11 +266,11 @@
                                         </pre>
                                     </div>
                                 </div>
-                            </div> <!-- end of item -->
+                            </div> 
                         
                             <div class="item">
                                 <div id="headingTwo">
-                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" role="button">
                                         <span class="circle-numbering">2</span>
                                         <span class="accordion-title">On machine 0 (ip 10.0.0.1), run: <br>
                                         </span>
@@ -282,7 +282,7 @@
                                         </pre>
                                     </div>
                                 </div>
-                            </div> <!-- end of item -->
+                            </div> 
                         
                             <div class="item">
                                 <div id="headingThree">
@@ -292,8 +292,175 @@
                                         </span>
                                     </span>
                                 </div>
+                            </div --> <!-- end of item -->
+                            <p>Run GiantVM on a single machine</p>
+                            <div class="item">
+                                <div id="headingOne">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
+                                        <span class="accordion-title">First, change HostOS kernel to Linux-DSM. <br>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div id="headingOne">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
+                                        <span class="circle-numbering">1</span>
+                                        <span class="accordion-title">Preparation<br>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>sudo apt-get install build-essential openssl libncurses5-dev libssl-dev</pre>
+                                        <pre>sudo apt-get install zlibc minizip libidn11-dev libidn11 bison flex</pre>
+                                        <pre>git clone https://github.com/GiantVM/Linux-DSM.git</pre>
+                                        <pre>cd Linux-DSM</pre>
+                                        Switch the MACRO definition from USE_KRDMA_NETWORK to USE_KTCP_NETWORK in arch/x86/include/asm/kvm_host.h.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div id="headingTwo">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
+                                        <span class="circle-numbering">2</span>
+                                        <span class="accordion-title">Enable DSM support in kernel config<br>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>make menuconfig</pre>
+                                        `Virtualization` --> `KVM distributed software memory support` --> `press 'Y' to include the option`<br>
+                                        `Save` --> `Exit`
+                                    </div>
+                                </div>
                             </div> <!-- end of item -->
-            
+                            <div class="item">
+                                <div id="headingThree">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" role="button">
+                                        <span class="circle-numbering">3</span>
+                                        <span class="accordion-title">Compile the kernel<br>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>make -jN</pre>
+                                        N is the number of threads you'd like to run parallelly.
+                                    </div>
+                                </div>
+                            </div> <!-- end of item -->
+                            <div class="item">
+                                <div id="headingThree">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" role="button">
+                                        <span class="circle-numbering">4</span>
+                                        <span class="accordion-title">Install the kernel and reboot<br>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>sudo make modules_install</pre>
+                                        <pre>sudo make install</pre>
+                                        <pre>sudo update-grub</pre>
+                                        <pre>reboot</pre>
+                                    </div>
+                                </div>
+                            </div> <!-- end of item -->  
+                            <div class="item">
+                                <div id="headingOne">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
+                                        <span class="accordion-title">QEMU
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div id="headingOne">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
+                                        <span class="circle-numbering">1</span>
+                                        <span class="accordion-title">Preparation<br>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>sudo apt-get install python pkg-config libglib2.0-dev zlib1g-dev libpixman-1-dev libfdt-dev</pre>
+                                        <pre>git clone https://github.com/GiantVM/QEMU.git</pre>
+                                        <pre>cd QEMU</pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div id="headingOne">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
+                                        <span class="circle-numbering">2</span>
+                                        <span class="accordion-title">Configuration<br>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>./configure --target-list=x86_64-softmmu --enable-kvm</pre>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div id="headingThree">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" role="button">
+                                        <span class="circle-numbering">3</span>
+                                        <span class="accordion-title">Compilation<br>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>make -jN</pre>
+                                    </div>
+                                </div>
+                            </div> <!-- end of item --> 
+                            <div class="item">
+                                <div id="headingThree">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" role="button">
+                                        <span class="circle-numbering">4</span>
+                                        <span class="accordion-title">Create hard disk image<br>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <pre>cd ..</pre>
+                                        <pre>wget http://ftp.sjtu.edu.cn/ubuntu-cd/16.04.6/ubuntu-16.04.6-server-amd64.iso</pre>
+                                        <pre>cd QEMU</pre> 
+                                        <pre>./qemu-img create -f qcow2 ubuntu-server.img 10G</pre>
+                                    </div>
+                                </div>
+                            </div> <!-- end of item --> 
+                            <div class="item">
+                                <div id="headingOne">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
+                                        <span class="accordion-title">Run GiantVM on a single machine
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionOne">
+                                    <div class="accordion-body">
+                                        <p>We simulate two machines by running two QEMU processes on a single machine.<br>
+                                            First we install vncviewer to monitor the guest.</p>
+                                        <pre>wget https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-6.19.325-Linux-x64.deb</pre>
+                                        <pre>sudo dpkg -i VNC-Viewer-6.19.325-Linux-x64.deb</pre>
+                                        <p>Terminal 1:</p>
+                                        <pre> sudo x86_64-softmmu/qemu-system-x86_64 --nographic -hda ubuntu-server.img -cpu host -machine kernel-irqchip=off -smp 2 -m 2048  --enable-kvm -serial mon:stdio -local-cpu 1,start=0,iplist="127.0.0.1 127.0.0.1" -vnc :0</pre>
+                                        <p>Terminal 2:</p>
+                                        <pre>sudo x86_64-softmmu/qemu-system-x86_64 --nographic -hda ubuntu-server.img -cpu host -machine kernel-irqchip=off -smp 2 -m 2048  --enable-kvm -serial mon:stdio -local-cpu 1,start=1,iplist="127.0.0.1 127.0.0.1"</pre>
+                                        <p>Terminal 3:</p>
+                                        <pre>vncviewer :0</pre>
+                                    </div>
+                                </div>
+                            </div> <!-- end of item --> 
                         </div> <!-- end of tabs-container -->
                     </div> <!-- end of tabs -->
                 </div> <!-- end of col -->
@@ -306,12 +473,12 @@
     <div id="publication" class="basic-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="text-container">
                         <h1>PUBLICATION</h1>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="text-container">
                         <div>
                             <h2>
@@ -364,12 +531,12 @@
     <div id="demo" class="basic-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="text-container">
                         <h1>DEMO</h1>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <video width="800rem" height="600rem" controls="controls">
                         <source src="video/kvm_forum_v4.mp4" type="video/mp4" />
                         <object data="kvm_forum_v4.mp4" width="800rem" height="600rem">
@@ -394,12 +561,12 @@
     <div id="slides" class="basic-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="text-container">
                         <h1>SLIDES</h1>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="text-container">
                         <embed src="slides/giantvm-turing.pdf" type="application/pdf" width="800rem" height="450rem" />
                     
@@ -561,12 +728,12 @@
     <div id="contact" class="basic-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="text-container">
                         <h1>CONTACT</h1>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <div class="text-container">
                         <h2>Room 5406, School of Software, </h2>
                         <h2>Shanghai Jiao Tong University, Shanghai, 200240</h2>
