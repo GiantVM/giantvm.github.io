@@ -294,6 +294,7 @@
                                 </div>
                             </div --> <!-- end of item -->
                             <p>Run GiantVM on a single machine</p>
+                            <p>ubuntu 16.04.7 linux kernel version: 4.15.0</p>
                             <div class="item">
                                 <div id="headingOne">
                                     <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
@@ -453,9 +454,9 @@
                                         <pre>wget https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-6.19.325-Linux-x64.deb</pre>
                                         <pre>sudo dpkg -i VNC-Viewer-6.19.325-Linux-x64.deb</pre>
                                         <p>Terminal 1:</p>
-                                        <pre> sudo x86_64-softmmu/qemu-system-x86_64 --nographic -hda ubuntu-server.img -cpu host -machine kernel-irqchip=off -smp 2 -m 2048  --enable-kvm -serial mon:stdio -local-cpu 1,start=0,iplist="127.0.0.1 127.0.0.1" -vnc :0</pre>
+                                        <pre> sudo x86_64-softmmu/qemu-system-x86_64 --nographic -hda ubuntu-server.img -cpu host -machine kernel-irqchip=off -smp 4 -m 4096  --enable-kvm -serial mon:stdio -local-cpu 2,start=0,iplist="127.0.0.1 127.0.0.1" -vnc :0</pre>
                                         <p>Terminal 2:</p>
-                                        <pre>sudo x86_64-softmmu/qemu-system-x86_64 --nographic -hda ubuntu-server.img -cpu host -machine kernel-irqchip=off -smp 2 -m 2048  --enable-kvm -serial mon:stdio -local-cpu 1,start=1,iplist="127.0.0.1 127.0.0.1"</pre>
+                                        <pre>sudo x86_64-softmmu/qemu-system-x86_64 --nographic -hda ubuntu-server.img -cpu host -machine kernel-irqchip=off -smp 4 -m 4096  --enable-kvm -serial mon:stdio -local-cpu 2,start=2,iplist="127.0.0.1 127.0.0.1"</pre>
                                         <p>Terminal 3:</p>
                                         <pre>vncviewer :0</pre>
                                     </div>
