@@ -59,6 +59,10 @@ Jin Zhang, Zhuocheng Ding, Yubin Chen, Xingguo Jia, Boshi Yu, Zhengwei Qi, Haibi
 
 VEE '20: Proceedings of the 16th ACM SIGPLAN/SIGOPS International Conference on Virtual Execution Environments
 · March 2020 · Pages 30–44
+
+### Book
+
+[《深入浅出系统虚拟化：原理与实现》](https://github.com/GiantVM/Book)
                         
 
 ### Demo
