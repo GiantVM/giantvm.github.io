@@ -5,7 +5,7 @@
 
 GiantVM is a distributed hypervisor that aggregates resources from multiple physical machines, providing the guest OS with a uniform hardware abstraction. A QEMU-KVM instance runs on each node of a cluster.
 
-This work is supported by the National Key Research & Development Program of China 2016YFB1000502.
+This work is supported by the NSFC Key Program (No.61732010), and National Key Research & Development Program of China 2016YFB1000502.
 
 ### About distributed QEMU
 In QEMU-KVM virtualization, QEMU simluates guest or device I/O requests and interrupts by interception. GiantVM is equipped IPI forwarding, interrupt forwarding and I/O forwarding techniques, which overcome the difficulties of sharing CPU and I/O devices across machines.
