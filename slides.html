@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiantVM - PDF Documents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #3a3a3a;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: #113448;
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0d6efd;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #495057;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #0d6efd;
+        }
+        
+        /* PDF Grid */
+        .pdf-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Montserrat', sans-serif;
+            color: #0d6efd;
+            font-size: 2.2rem;
+        }
+        
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .pdf-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .pdf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pdf-preview {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .pdf-icon {
+            font-size: 4rem;
+            opacity: 0.9;
+        }
+        
+        .page-count {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .view-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #0d6efd;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .pdf-card:hover .view-button {
+            opacity: 1;
+        }
+        
+        .pdf-info {
+            padding: 20px;
+        }
+        
+        .pdf-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #212529;
+        }
+        
+        .pdf-description {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .pdf-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .file-size {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* PDF Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-wrapper {
+            width: 80%;
+            max-width: 900px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+        }
+        
+        .modal-content {
+            flex: 1;
+            background: white;
+            overflow: hidden;
+        }
+        
+        .close-modal {
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0d6efd;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        
+        .download-btn:hover {
+            background: #0b5ed7;
+        }
+        
+        /* Footer */
+        footer {
+            background: #212529;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #0d6efd;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #6c757d;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .pdf-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            header {
+                padding: 60px 0 40px;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .modal-wrapper {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="https://giantvm.github.io/images/logo.png" alt="GiantVM Logo">
+                <div class="logo-text">GiantVM</div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>GiantVM Technical Documents</h1>
+            <p>Access presentation slide decks and technical documentation about our distributed hypervisor technology</p>
+        </div>
+    </header>
+
+    <!-- PDF Section -->
+    <section class="pdf-section">
+        <div class="container">
+            <h2 class="section-title">Featured Documents</h2>
+            <div class="pdf-grid">
+                <!-- PDF 1 -->
+                <div class="pdf-card" data-pdf-src="slides/giantvm-turing.pdf" data-title="ACM TURC 2019 Slide Deck">
+                    <div class="pdf-preview">
+                        <div class="pdf-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <span class="page-count">36 pages</span>
+                        <div class="view-button">
+                            <i class="fas fa-eye"></i> View PDF
+                        </div>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">ACM TURC 2019 Slide Deck</h3>
+                        <p class="pdf-description">A Preliminary Evaluation on Many-to-one Virtualization.</p>
+                        <div class="pdf-meta">
+                            <span><i class="far fa-calendar"></i> May 2019</span>
+                            <!-- <span class="file-size"><i class="fas fa-weight-hanging"></i> 2.4 MB</span> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PDF 2 -->
+                <div class="pdf-card" data-pdf-src="slides/giantvm-kvm-forum-2025.pdf" data-title="KVM Forum 2025 Slide Deck">
+                    <div class="pdf-preview">
+                        <div class="pdf-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <span class="page-count">30 pages</span>
+                        <div class="view-button">
+                            <i class="fas fa-eye"></i> View PDF
+                        </div>
+                    </div>
+                    <div class="pdf-info">
+                        <h3 class="pdf-title">KVM Forum 2025 Slide Deck</h3>
+                        <p class="pdf-description">GiantVM: A Many-to-one Virtualization System Build Atop the Qemu/KVM Hypervisor.</p>
+                        <div class="pdf-meta">
+                            <span><i class="far fa-calendar"></i> Sep 2025</span>
+                            <!-- <span class="file-size"><i class="fas fa-weight-hanging"></i> 3.1 MB</span> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Modal -->
+    <div class="modal" id="pdfModal">
+        <div class="modal-wrapper">
+            <div class="modal-header">
+                <h3 class="modal-title" id="pdfModalTitle">Document Viewer</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-content">
+                <iframe class="pdf-viewer" id="pdfViewer" src="about:blank"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+                <img src="https://giantvm.github.io/images/logo.png" alt="GiantVM Logo" style="filter: brightness(0) invert(1);">
+                <div class="logo-text" style="color: white;">GiantVM</div>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/giantvm"><i class="fab fa-github"></i></a>
+<!--                 <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a> -->
+                <a href="https://giantvm.github.io/"><i class="fa-solid fa-globe"></i></a>
+            </div>
+            <p class="copyright">© 2025 Trusted Cloud Group · Shanghai Key Laboratory of Scalable Computing and Systems, Shanghai Jiao Tong University</p>
+        </div>
+    </footer>
+
+    <script>
+        // PDF modal functionality
+        const modal = document.getElementById('pdfModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const pdfViewer = document.getElementById('pdfViewer');
+        const pdfModalTitle = document.getElementById('pdfModalTitle');
+        const pdfCards = document.querySelectorAll('.pdf-card');
+        
+        // Open modal with PDF
+        pdfCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const pdfSrc = this.getAttribute('data-pdf-src');
+                const title = this.getAttribute('data-title');
+                
+                pdfModalTitle.textContent = title;
+                
+                // Load PDF in iframe
+                pdfViewer.src = pdfSrc;
+                
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close modal
+        closeModalBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            pdfViewer.src = 'about:blank';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                pdfViewer.src = 'about:blank';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>

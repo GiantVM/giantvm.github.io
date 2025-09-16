@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiantVM - Video Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #3a3a3a;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: #113448;
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0d6efd;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #495057;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #0d6efd;
+        }
+        
+        /* Video Grid */
+        .video-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Montserrat', sans-serif;
+            color: #0d6efd;
+            font-size: 2.2rem;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .video-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        .local-video-preview {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            background-color: #0d6efd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .local-video-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .local-video-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            opacity: 0.8;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(13, 110, 253, 0.8);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: background 0.3s;
+            z-index: 2;
+        }
+        
+        .play-button:hover {
+            background: rgba(13, 110, 253, 1);
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #212529;
+        }
+        
+        .video-description {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        /* Video Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+            background: #000;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Local Video Controls */
+        .local-video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .local-video-controls button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        
+        .progress-bar {
+            flex-grow: 1;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 0 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .progress {
+            height: 100%;
+            background: #0d6efd;
+            width: 0%;
+        }
+        
+        /* Footer */
+        footer {
+            background: #212529;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #0d6efd;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #6c757d;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            header {
+                padding: 60px 0 40px;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="https://giantvm.github.io/images/logo.png" alt="GiantVM Logo">
+                <div class="logo-text">GiantVM</div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Back to Home</a>
+<!--                 <a href="#">Videos</a>
+                <a href="#">Documentation</a>
+                <a href="#">Publications</a>
+                <a href="#">Contact</a> -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>GiantVM Video Gallery</h1>
+            <p>Watch demonstrations and technical overviews of our distributed hypervisor technology</p>
+        </div>
+    </header>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title">Featured Videos</h2>
+            <div class="video-grid">
+
+                <!-- Video 6 - YouTube -->
+                <div class="video-card" data-video-id="-PmyK0QEftc" data-type="youtube">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/-PmyK0QEftc/maxresdefault.jpg" alt="Distributed QEMU at KVM Forum">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">GiantVM at KVM Forum 2025</h3>
+                        <p class="video-description">Talk at KVM Forum 2025 about CXL enhancements by Muliang Shou.</p>
+                        <div class="video-meta">
+                            <span><i class="far fa-clock"></i> 24:03</span>
+                            <span><i class="far fa-calendar"></i> September 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 - YouTube -->
+                <div class="video-card" data-video-id="GprmhYU1M8Q" data-type="youtube">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/GprmhYU1M8Q/maxresdefault.jpg" alt="Distributed QEMU at KVM Forum">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Distributed QEMU at KVM Forum 2018</h3>
+                        <p class="video-description">Talk at KVM Forum 2018 about Distributed QEMU by Yubing Chen and Zhuocheng Ding.</p>
+                        <div class="video-meta">
+                            <span><i class="far fa-clock"></i> 22:15</span>
+                            <span><i class="far fa-calendar"></i> October 2018</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Video 1 - YouTube -->
+                <div class="video-card" data-video-id="kB4biFRlgbI" data-type="youtube">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/kB4biFRlgbI/maxresdefault.jpg" alt="GiantVM Paper Overview">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">GiantVM Paper Overview</h3>
+                        <p class="video-description">A detailed overview of the GiantVM research paper and its contributions to distributed virtualization by Vivek Haldar.</p>
+                        <div class="video-meta">
+                            <span><i class="far fa-clock"></i> 11:23</span>
+                            <span><i class="far fa-calendar"></i> Dec 2020</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 - Local -->
+                <div class="video-card" data-video-src="video/giantvm-kvm-forum-25.mp4" data-type="local" data-poster="video/giantvm-kvm-forum-25.mp4">
+                    <div class="local-video-preview">
+                        <video muted loop preload="metadata">
+                            <source src="video/giantvm-kvm-forum-25.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="local-video-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Demo: CXL integration benchmark</h3>
+                        <p class="video-description">See how GiantVM performs with CXL enhancement in various benchmark tests. Shown in KVM Forum 2025.</p>
+                        <div class="video-meta">
+                            <span><i class="far fa-clock"></i> 1:05</span>
+                            <span><i class="far fa-calendar"></i> Sep 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4 - Local -->
+                <div class="video-card" data-video-src="video/giantvm-demo2.mp4" data-type="local" data-poster="video/giantvm-demo2.mp4">
+                    <div class="local-video-preview">
+                        <video muted loop preload="metadata">
+                            <source src="video/giantvm-demo2.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="local-video-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Demo: GiantVM benchmarks, sysbench (archived) </h3>
+                        <p class="video-description">See how the old version of GiantVM (on Linux 4.x) performs in various benchmark tests.</p>
+                        <div class="video-meta">
+                            <span><i class="far fa-clock"></i> 2:11</span>
+                            <span><i class="far fa-calendar"></i> September 2020</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 5 - Local -->
+                <div class="video-card" data-video-src="video/kvm_forum_v4.mp4" data-type="local" data-poster="video/kvm_forum_v4.mp4">
+                    <div class="local-video-preview">
+                        <video muted loop preload="metadata">
+                            <source src="video/kvm_forum_v4.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="local-video-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Demo: GiantVM benchmarks, OS boot (archived) </h3>
+                        <p class="video-description">See how the old version of GiantVM (on Linux 4.x) performs in various benchmark tests.</p>
+                        <div class="video-meta">
+                            <span><i class="far fa-clock"></i> 1:19</span>
+                            <span><i class="far fa-calendar"></i> September 2020</span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="video-container" id="videoPlayer">
+                <!-- Video content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+                <img src="https://giantvm.github.io/images/logo.png" alt="GiantVM Logo" style="filter: brightness(0) invert(1);">
+                <div class="logo-text" style="color: white;">GiantVM</div>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/giantvm"><i class="fab fa-github"></i></a>
+<!--                 <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a> -->
+                <a href="https://giantvm.github.io/"><i class="fa-solid fa-globe"></i></a>
+            </div>
+            <p class="copyright">© 2025 Trusted Cloud Group · Shanghai Key Laboratory of Scalable Computing and Systems, Shanghai Jiao Tong University</p>
+        </div>
+    </footer>
+
+    <script>
+        // Video modal functionality
+        const modal = document.getElementById('videoModal');
+        const closeModal = document.getElementById('closeModal');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoCards = document.querySelectorAll('.video-card');
+        
+        // Open modal with video
+        videoCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const videoType = this.getAttribute('data-type');
+                
+                if (videoType === 'youtube') {
+                    const videoId = this.getAttribute('data-video-id');
+                    videoPlayer.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                } else if (videoType === 'local') {
+                    const videoSrc = this.getAttribute('data-video-src');
+                    const poster = this.getAttribute('data-poster') || '';
+                    videoPlayer.innerHTML = `
+                        <video controls autoplay style="width:100%;height:100%;">
+                            <source src="${videoSrc}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                }
+                
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            videoPlayer.innerHTML = ''; // Stop video playback
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                videoPlayer.innerHTML = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                videoPlayer.innerHTML = '';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Setup local video previews
+        document.addEventListener('DOMContentLoaded', function() {
+            const localVideos = document.querySelectorAll('.local-video-preview video');
+            localVideos.forEach(video => {
+                video.addEventListener('loadedmetadata', function() {
+                    // Seek to 25% of the video for a good preview
+                    this.currentTime = this.duration * 0.25;
+                });
+                
+                video.addEventListener('timeupdate', function() {
+                    // Once we've seeked to the desired position, pause
+                    if (this.currentTime >= this.duration * 0.26) {
+                        this.pause();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
